@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25" zv="Cache for Windows (x86-64) 2017.1 (Build 792U)" ts="2017-07-24 22:09:21">
+<Class name="Chat.ChatWebSocket">
+<Super>%CSP.WebSocket</Super>
+<TimeChanged>64488,57814.393973</TimeChanged>
+<TimeCreated>64488,57814.393973</TimeCreated>
+
+<Method name="OnPreServer">
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+		if ($get(^ChatWebSocket("messages"))=""){
+			set ^ChatWebSocket("messages") = 0
+		}
+		return $$$OK
+]]></Implementation>
+</Method>
+
+<Method name="Server">
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+		do ..Write("Welcome!")
+		set data = ..Read()
+		do ..Write("Got a message: "_data)
+		return $$$OK
+]]></Implementation>
+</Method>
+</Class>
+</Export>
